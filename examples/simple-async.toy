@@ -1,0 +1,25 @@
+(@import (stdio ""))
+
+
+(@var
+  (int_stream (@async
+    1
+    2
+    3
+  ))
+)
+
+(@async
+  (@set int_stream "xxx")
+)
+
+(@var
+  (out_stream (@async
+    (@map (@func (v) (v)) (@collect int_stream))
+  ))
+)
+
+(@collect (@async
+  (stdio.print (@collect out_stream))
+))
+

@@ -1,0 +1,25 @@
+(@import
+  (http "")
+  (json "")
+  (stdio "")
+)
+
+(@var
+  (fetch (@chain
+    http.get
+    json.parse
+    (@func (json_hash) (
+      (@match
+        (@has json_hash "posts")
+        (@when true (@get json_hash "posts"))
+        (@when false json_hash)
+      )
+    ))
+    stdio.print
+  ))
+)
+
+(@map fetch (@list
+  "https://dummyjson.com/test"
+  "https://dummyjson.com/posts?limit=1"
+))

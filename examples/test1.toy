@@ -1,0 +1,8 @@
+# idea to use it for code generation
+(service
+  (name "my-cool-app")
+  (module (type api) (name "user-profile") (spec "swagger.json"))
+  (db "user-profile" (migrations "./db/migrations/") (max_connections 5))
+  (kafka_producer "user-profile-updates" (spec "argo-schema-123"))
+)
+

@@ -1,0 +1,42 @@
+(@import
+  (http "github.com/toy/http")
+  (json "github.com/toy/json")
+  (stdio "github.com/toy/stdio")
+)
+
+(@var
+  (extact_name (@func (result)
+    (@get result "name")
+  ))
+
+  (fetch_name (@chain
+      http.get
+      json.parse
+      extact_name
+  ))
+
+  (profile_exists_for (@func (name profiles)
+    (@has
+      (@async (@map
+        profiles
+        fetch_name
+      ))
+      name
+    )
+  ))
+
+  (main (@func ()
+    (stdio.print (@match
+      (profile_exists_for
+        "Pesho"
+        (@list "profile1/url" "profile2/url" "profile3/url")
+      )
+      (@when true "Found Pesho!")
+      (@when false "Didn't find Pesho...")
+    ))
+  ))
+)
+
+(@export
+  main
+)

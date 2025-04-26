@@ -1,0 +1,30 @@
+(@import
+  (http "")
+  (json "")
+  (stdio "")
+)
+
+
+(@var
+  (extract_posts (@func (json_hash) (
+    (@match
+      (@has json_hash "posts")
+      (@when true (@get json_hash "posts"))
+      (@when false "No posts found")
+    )
+  )))
+)
+
+(@var
+  (fetch (@chain
+    http.get
+    json.parse
+    extract_posts
+  ))
+)
+
+(@collect (@async
+  (stdio.print "https://dummyjson.com/test:" (fetch "https://dummyjson.com/test"))
+  (stdio.print "https://dummyjson.com/posts:" (fetch "https://dummyjson.com/posts?limit=1&delay=3000"))
+))
+

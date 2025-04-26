@@ -1,0 +1,13 @@
+(@var
+  (breakfast (@hash
+    ("eggs" 2)
+    ("avocado slides" 3)
+    ("slice of bread" 1)
+  ))
+)
+
+# comments should be ignored!
+(@list test "abc" 1 x true)
+
+(xxx)
+

@@ -1,0 +1,9 @@
+(@var
+  (hi "Helloooooooo")
+  (bye "See you soon")
+)
+
+(@export
+  hi
+  bye
+)

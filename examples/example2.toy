@@ -1,0 +1,9 @@
+(@var
+  (extact_name (@func (result) (
+    (@get result name)
+  )))
+)
+
+(@export
+  extact_name
+)

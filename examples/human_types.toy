@@ -1,0 +1,44 @@
+(@var
+  (man (@func (name age height) (
+    (@hash
+      ("type" "man")
+      ("name" name)
+      ("age" age)
+      ("height" height)
+    )
+  )))
+
+  (woman (@func (name age hair_color) (
+    (@hash
+      ("type" "woman")
+      ("name" name)
+      ("age" age)
+      ("hair_color" hair_color)
+    )
+  )))
+
+  (baby (@func (name age is_loved) (
+    (@hash
+      ("type" "baby")
+      ("name" name)
+      ("age" age)
+      ("is_loved" is_loved)
+    )
+  )))
+
+  (title_for (@func (person) (
+    (@match
+      (@get person "type")
+      (@when "baby" "baby ")
+      (@when "woman" "Ms. ")
+      (@when (= value "man") "Mr. ")
+    )
+  )))
+)
+
+(@export
+  man
+  woman
+  baby
+  title_for
+)

@@ -1,0 +1,8 @@
+(sum 1 2 3 4)
+
+(sum (map (mult x 10) 1 2 3 4 5 6 7))
+
+# this should fail to parse
+(test (a)
+
+(test_two "a" "b" "c")

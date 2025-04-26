@@ -1,0 +1,40 @@
+(@import
+  (stdio "")
+  (_ "./examples/human_types.toy")
+)
+
+(@var
+  (Misho (_.man "Misho" 37 183))
+  (Nati (_.woman "Nati" 28 "blonde"))
+  (Krisi (_.baby "Krisi" 1 true))
+)
+
+(@var
+  (Mikovi (@list Misho Nati Krisi))
+)
+
+# (@var
+#   (msg (@map (@func (person) (
+#     (stdio.print "Say something to" (@get person "name") ":")
+#     (stdio.string
+#       (stdio.read) ", " (_.title_for person) (@get person "name")
+#     )
+#   )) Mikovi))
+# )
+
+(@var
+  (msg (@map (@chain
+    (@func (person) ((@get person "name")))
+    (@func (name) (
+      (stdio.print "Say something to" name ":")
+      (stdio.string (stdio.read) " " name)
+    ))
+    (@func (name) ((stdio.string "I say, " name)))
+    (@func (greeting) ((stdio.string greeting ", nice to meet you")))
+  ) Mikovi))
+)
+
+# would print the list of hashes
+# (stdio.print Mikovi)
+
+(@map stdio.print msg)

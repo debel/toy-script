@@ -1,0 +1,11 @@
+(@import
+  (stdio "hacked in..")
+  (greetings "./examples/greets.toy")
+)
+
+(@var
+  (myName "Nati")
+)
+
+(stdio.print greetings.hi "," myName "!!!")
+(stdio.print greetings.bye "," myName "!!!")
